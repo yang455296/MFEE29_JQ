@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <h1>Hello</h1>
+    <input type="text" placeholder="please input your num" value="123">
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+
+        $('h1').click(function () {
+            console.log('val():', $('input').val());
+            console.log('attr("value"):', $('input').attr("value"));
+            // 一樣attr 是html預設值
+        })
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="product-demo d-flex justify-content-center">
+                    <img class="h-100" src="./images/product1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="d-flex">
+                    <div class="col">
+                        <div class="img-wrap">
+                            <img class="w-100" src="./images/product1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="img-wrap">
+                            <img class="w-100" src="./images/product2.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="img-wrap">
+                            <img class="w-100" src="./images/product3.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="img-wrap">
+                            <img class="w-100" src="./images/product4.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="img-wrap">
+                            <img class="w-100" src="./images/product5.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // [todo:點擊小圖，讓大圖的src = 被點擊的小圖的 src]
+
+        // 1.時機點:小圖被使用者點擊
+        $(".img-wrap img").click(function (e){
+            // 2. 得到小圖的src
+            console.log('e.currentTarget:', e.currentTarget);
+            console.log($(e.currentTarget).attr("src"));
+            const imgSrc = $(e.currentTarget).attr("src")
+            // 3. 大圖的src=小圖的src
+            // $(".product-demo img").attr("src", $(e.currentTarget).attr("src"))
+            $(".product-demo img").attr("src", imgSrc)
+        })
+    </script>
+</body>
+
+</html>

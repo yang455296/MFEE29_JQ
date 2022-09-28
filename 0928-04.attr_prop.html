@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+
+    <input type="checkbox" checked>
+    <button>click</button>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $("button").click(function(){
+            console.log('attr:', $('input').attr('checked'));
+            console.log('prop:', $('input').prop('checked'));
+            // attr html預設值, prop 狀態
+            // 有沒有勾選 attr都會一樣, prop會跟著變
+        })
+    </script>
+</body>
+
+</html>

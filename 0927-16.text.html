@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 id="sample">Hello <span>World</span></h1>
+    </div>
+    <p id="result1"></p>
+    <p id="result2"></p>
+    <p id="result3"></p>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // console.log($("#sample").text());
+        $("#result1").text($("#sample").text())
+
+        // console.log($("#sample").html());
+        $("#result2").html($("#sample").html())
+
+        // console.log($("div").html());
+        $("#result3").html($("#sample").parent().html())
+
+
+        $("#result3").text($("#sample").parent().html())
+        //.html()可以複製到html標籤<span>, .text()不行
+    </script>
+</body>
+
+</html>
