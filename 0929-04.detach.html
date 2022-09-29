@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <button class="btn btn-info">detach</button>
+    <div class="container">
+        <div class="row flex-column">
+            <div class="hello">Hello World</div>
+            <div class="hello hello1">Hello World1</div>
+            <div class="hello2">Hello World2</div>
+
+
+
+            <script src="./js/jquery-3.6.1.min.js"></script>
+
+            <script>
+                let isDetached = false;
+                let myContent = null;
+                let index = 0;
+                // console.log("1", myContent);
+                $(".btn").click(function () {
+                    if (isDetached) {
+                        // console.log("2", myContent);
+                        isDetached = false;
+                        $('.row').append(myContent);
+                        // console.log("3", myContent);
+                    }
+                    else {
+                        // console.log("4", myContent);
+                        isDetached = true;
+                        myContent = $(".row div").detach();
+                        // console.log("5", myContent);
+                    }
+                });
+
+            </script>
+</body>
+
+</html>

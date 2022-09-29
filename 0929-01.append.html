@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <button class="btn1">click +</button>
+    <button class="btn2">click -</button>
+    <button class="btn3"> 0 </button>
+    <!-- before -->
+    <ul>
+        <!-- prepend -->
+        <li>item1</li>
+        <li>item2</li>
+        <!-- append -->
+    </ul>
+    <!-- after -->
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        let a = 2; //以後盡量避免全域
+        $(".btn1").click(function (e) {
+            a++;
+            $("ul").append("<li>item" + a + "</li>")
+        })
+        $(".btn2").click(function (e) {
+            $("ul li").last().remove()
+            if(a>0){a--};
+        })
+        $(".btn3").click(function (e) {
+            $("ul li").remove()
+            a=0;
+        })
+
+        // $("ul").append("<li>item3</li>")
+        // $("ul").append("<li>item4</li>")
+
+        // $("ul").prepend("<li>item0</li>")
+
+        // $("ul").before("<li>item01</li>")
+
+        // $("ul").after("<li>item02</li>")
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 600px;
+            height: 600px;
+            background-color: #ccc;
+        }
+
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: tomato;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+            position: absolute;
+            right: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="wrap">
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $('.box2').click(function (e) {
+            // e.stopPropagation();
+            console.log('box2 clicked');
+            console.log('box2 this', this);
+        })
+
+        // ()=>{} this = window
+        $('.wrap').click(function (e) {
+            console.log('e', e);
+            console.log('wrap clicked');
+            console.log('wrap this', this);
+        })
+
+    </script>
+</body>
+
+</html>
