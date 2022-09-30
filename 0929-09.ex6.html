@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .train {
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            width: 500%;
+            transform: translateX(0px);
+            /* transform: translateX(-800px);  第二張圖 */
+            transition: 0.5s;
+        }
+
+        .train img {
+            width: 100%;
+            /* li 的 100% = train 的 1/5 = 800px */
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding-left: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .slider-dots li {
+            width: 50px;
+            height: 10px;
+            border: 1px solid #fff;
+            margin: 0 4px;
+        }
+
+        .slider-dots li:nth-child(1) {
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="train">
+            <li><img src="./images/slide1.jpg" alt=""></li>
+            <li><img src="./images/slide2.jpg" alt=""></li>
+            <li><img src="./images/slide3.jpg" alt=""></li>
+            <li><img src="./images/slide4.jpg" alt=""></li>
+            <li><img src="./images/slide5.jpg" alt=""></li>
+        </ul>
+        <ul class="slider-dots">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(".slider-dots li").click(function () {
+            // console.log("click", $(this).index())
+            const n = $(this).index() * -800;
+            // console.log(n)
+
+            // $(".train").css("transform", "translateX(" + n + "px)")
+            $(".train").css("transform", `translateX(${n}px)`)
+
+            // $(".slider-dots li").css("background-color", "transparent")  // 全部變透明
+            $(this).css("background-color", "#fff") // 選中的變白色
+            $(this).siblings().css("background-color", "transparent") // 其他變透明
+        })
+    </script>
+</body>
+
+</html>

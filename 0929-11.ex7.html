@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <select name="city" id="city">
+            <option value="0">基隆</option>
+            <option value="1">台北</option>
+            <option value="2">新北</option>
+        </select>
+        <select name="district" id="district">
+            <option value="0">七堵</option>
+            <option value="1">中正</option>
+            <option value="2">暖暖</option>
+        </select>
+    </form>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        let districtArray = [
+            ['七堵', '中正', '暖暖'],
+            ['中正', '大安', '信義'],
+            ['蘆洲', '三重', '新店'],
+        ];
+
+        // [todo:] 使用者修改了城市的下拉式選單，就把區域的選單改成該城市的區域們
+        // 1.使用者改成甚麼城市？
+        // 2.該城市的區域名陣列怎麼拿？
+        // 3.如何修改下拉式選單裡的選項？
+        $("#city").change(function () {
+            // console.log($(this).val()) // 0, 1, 2
+
+            const n = $(this).val(); //選的市的index
+            const m = districtArray[n]; //選的市下面的區
+
+            // console.log(districtArray[0][1])
+
+
+            // 方法一
+            // for (i = 0; i < m.length; i++) {
+            //     console.log($("#district option").eq(i).text());
+            //     $("#district option").eq(i).text((districtArray[n][i]))//選項數目一樣可以用text or html
+            // }
+
+            // 方法二
+            $("#district").empty(); //清空
+            for (i = 0; i < m.length; i++) {
+                $("#district").append(`<option value="${i}">${m[i]}</option>`)
+            }
+            
+        })
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <label for="username">username:</label>
+        <input id="username" type="text" name="username" value="">
+
+        <button type="submit">submit</button>
+    </form>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $('form').submit(function (e) {
+            e.preventDefault();
+            console.log('submit');
+            // 用 AJAX 自己送資料
+        })
+
+        $('input').focus(function () {
+            console.log('input focus');
+        })
+
+        $('input').blur(function () {
+            console.log('input blur');
+            console.log('input val', $(this).val());
+        })
+
+        $('input').change(function () {
+            console.log('input change');
+            console.log('input changed:', $(this).val());
+        })
+
+        $('input').on('input', function () {
+            console.log('input input');
+            console.log('input input:', $(this).val());
+        })
+    </script>
+</body>
+
+</html>
