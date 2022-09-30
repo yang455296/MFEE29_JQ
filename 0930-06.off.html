@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button id="sayHi">SayHi</button>
+    <button id="on">On</button>
+    <button id="off">Off</button>
+
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        const sayHi = function () {
+            console.log('Hi');
+        }
+
+        $('#on').click(function () {
+            console.log('on clicked');
+            $('#sayHi').on('click', sayHi)
+        })
+
+        // 必須是同一個function "sayHi"
+        // 因為function () {console.log('Hi')} =/= function () {console.log('Hi')}
+        // sayHi === sayHi
+        $('#off').click(function () {
+            console.log('off clicked');
+            $('#sayHi').off('click', sayHi)
+        })
+
+    </script>
+</body>
+
+</html>
