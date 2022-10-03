@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: lightblue;
+            transition: .5s;
+        }
+
+        .box.active {
+            background-color: lightgreen;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="btnAdd">Add</button>
+    <button id="btnRemove">Remove</button>
+    <button id="btnToggle">Toggle</button>
+    <button id="btnHas">Has</button>
+    <div class="box"></div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+
+        // 使用時注意權重
+        $('#btnAdd').click(function () {
+            $('.box').addClass('active')
+        })
+        $('#btnRemove').click(function () {
+            $('.box').removeClass('active')
+        })
+
+        $('#btnToggle').click(function () {
+            $('.box').toggleClass('active')
+        })
+        $('#btnHas').click(function () {
+            console.log($('.box').hasClass('active'))
+        })
+    </script>
+</body>
+
+</html>

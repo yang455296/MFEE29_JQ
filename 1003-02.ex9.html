@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: #ccc;
+            position: relative;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: tomato;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: .3s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="wrap mx-auto">
+                <div class="box"></div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="btn btn-info btn-u">
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-info mx-3 btn-l">
+                    <i class="fa-solid fa-caret-left"></i>
+                </button>
+
+                <button class="btn btn-info mx-3 btn-r">
+                    <i class="fa-solid fa-caret-right"></i>
+                </button>
+            </div>
+            <div class="col-12 text-center">
+                <button class="btn btn-info btn-d">
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // const maxLeft = $(".wrap").width()-$(".box").width();  
+        // const maxTop = $(".wrap").height()-$(".box").height();  
+        let boxLeft = parseInt($(".box").css("left"));
+        let boxTop = parseInt($(".box").css("top"));
+
+        // 
+        let index = 0;
+        const speed = 10;
+        let myInterval = null;
+
+        const minLeft = 0;
+
+        // function startInterval() {
+        //     myInterval = setInterval(() => {
+        //         const maxLeft = $(".wrap").width() - $(".box").width();
+        //         // console.log("boxLeft:", boxLeft);
+        //         boxLeft += 10;
+        //         if (boxLeft <= maxLeft) {
+        //             moveRight(boxLeft);
+        //         } else {
+        //             boxLeft = maxLeft;
+        //         }
+        //     }, 100);
+        // }
+        // function startInterval2() {
+        //     myInterval = setInterval(() => {
+        //         const minLeft = 0;
+        //         // console.log("boxLeft:", boxLeft);
+        //         boxLeft -= 10;
+        //         if (boxLeft >= minLeft) {
+        //             moveRight(boxLeft);
+        //         } else {
+        //             boxLeft = minLeft;
+        //         }
+        //     }, 100);
+        // }
+
+        // function stopInterval() {
+        //     clearInterval(myInterval)
+        // }
+        // function stopInterval2() {
+        //     clearInterval(myInterval)
+        // }
+
+        // $('.btn-r').mousedown(startInterval)
+        // $('.btn-r').mouseup(stopInterval)
+        // $('.btn-l').mousedown(startInterval2)
+        // $('.btn-l').mouseup(stopInterval2)
+
+        // function moveRight(boxLeft) {
+        //     $(".box").css("left", boxLeft);
+        // }
+
+
+
+        // ---------------------------------------------------
+        function startInterval(cssname, direction, boxEdge, edge, compare) {
+            myInterval = setInterval(() => {
+                eval(`boxEdge ${direction} ${speed}`)
+
+                if (eval(`boxEdge ${compare} edge`)) {
+                    $('.box').css(cssname, boxEdge);
+                }
+
+            }, 100);
+        }
+
+        function stopInterval() {
+            clearInterval(myInterval)
+        }
+
+        $('.btn-r').mousedown(() => {
+            const boxLeft = parseInt($('.box').css('left'));
+            const maxLeft = $('.wrap').width() - $('.box').width();
+            startInterval('left', '+=', boxLeft, maxLeft, '<=')
+        })
+        $('.btn-r').mouseup(stopInterval)
+        $('.btn-l').mousedown(() => {
+            const boxLeft = parseInt($('.box').css('left'));
+            const minLeft = 0;
+            startInterval('left', '-=', boxLeft, minLeft, '>=')
+        })
+        $('.btn-l').mouseup(stopInterval)
+        $('.btn-u').mousedown(() => {
+
+
+            startInterval("top", "-=")
+        })
+        $('.btn-u').mouseup(stopInterval)
+        $('.btn-d').mousedown(() => {
+
+            
+            startInterval("top", "+=")
+        })
+        $('.btn-d').mouseup(stopInterval)
+
+        //------------------------------------------
+
+
+        // $(".btn-r").click(moveRight)
+        // $(".btn-l").click(moveLeft)
+        // $(".btn-d").click(moveDown)
+        // $(".btn-u").click(moveUp)
+
+
+        // // 4. 加上鍵盤
+        // $(document).on('keydown', function (e) {
+        //     console.log('keydown:', e.keyCode);
+        //     if (e.keyCode === 39) {
+        //         boxLeft+=10;
+        //         moveRight(boxLeft);
+        //     }
+        //     if (e.keyCode === 37) {
+        //         moveLeft();
+        //     }
+        //     if (e.keyCode === 40) {
+        //         moveDown();
+        //         e.preventDefault();
+        //     }
+        //     if (e.keyCode === 38) {
+        //         moveUp();
+        //     }
+        // })
+
+        // 3. 同2.
+        // function moveRight(boxLeft) {
+        //     const maxLeft = $(".wrap").width() - $(".box").width();
+        //     if (boxLeft <= maxLeft) {
+        //         boxLeft += 50;
+        //         $(".box").css("left", boxLeft);
+        //     }
+        // }
+        // function moveLeft() {
+        //     const maxLeft = $(".wrap").width() - $(".box").width();
+        //     if (boxLeft >= $(".box").width()) {
+        //         boxLeft -= 50;
+        //         $(".box").css("left", boxLeft);
+        //     }
+        // }
+        // function moveDown() {
+        //     const maxTop = $(".wrap").height() - $(".box").height();
+        //     if (boxTop < maxTop) {
+        //         boxTop += 50;
+        //         $(".box").css("top", boxTop);
+        //     }
+        // }
+        // function moveUp() {
+        //     const maxTop = $(".wrap").height() - $(".box").height();
+        //     if (boxTop >= $(".box").height()) {
+        //         boxTop -= 50;
+        //         $(".box").css("top", boxTop);
+        //     }
+        // }
+
+
+        // 2. 加上限制
+        // $(".btn-r").click(function(){
+        //     if (parseInt($(".box").css("left"))<maxLeft){
+        //     $(".box").css("left", "+=100");
+        // }})
+        // $(".btn-l").click(function(){
+        //     if (parseInt($(".box").css("left"))>= $(".box").width()){
+        //         $(".box").css("left", "-=100");
+        //     }})
+        // $(".btn-d").click(function(){
+        //     if (parseInt($(".box").css("top"))<maxTop){
+        //     $(".box").css("top", "+=100");
+        // }})
+        // $(".btn-u").click(function(){
+        //     if (parseInt($(".box").css("top"))>= $(".box").width()){
+        //         $(".box").css("top", "-=100");
+        //     }})
+
+
+        // 1. 移動
+        // $(".btn-u").click(function(){
+        //     $(".box").css("top", "-=100");
+        // })
+        // $(".btn-l").click(function(){
+        //     $(".box").css("left", "-=100");
+        // })
+        // $(".btn-r").click(function(){
+        //     $(".box").css("left", "+=100");
+        // })
+        // $(".btn-d").click(function(){
+        //     $(".box").css("top", "+=100");
+        // })
+
+
+    </script>
+</body>
+
+</html>

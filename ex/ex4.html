@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Document</title>
+    <style>
+        .img-wrap {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid transparent
+        }
+
+        .img-wrap>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md">
+                <div class="img-wrap">
+                    <img src="./../images/person1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="img-wrap">
+                    <img src="./../images/person2.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="img-wrap">
+                    <img src="./../images/person3.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="img-wrap">
+                    <img src="./../images/person4.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-12 col-md">
+                <div class="img-wrap">
+                    <img src="./../images/person5.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $(".img-wrap").click(function () {
+            $(this).css("border", "3px solid red").parent().siblings().find(".img-wrap").css("border", "3px solid transparent");
+        })
+
+    </script>
+</body>
+
+</html>
