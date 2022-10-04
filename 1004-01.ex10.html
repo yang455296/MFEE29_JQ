@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .fontS {
+            font-size: .8rem;
+        }
+
+        .fontM {
+            font-size: 1rem;
+        }
+
+        .fontL {
+            font-size: 1.2rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row  justify-content-end">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary button-s">S</button>
+                <button type="button" class="btn btn-primary button-m active">M</button>
+                <button type="button" class="btn btn-primary button-l">L</button>
+            </div>
+        </div>
+        <div class="row">
+            <h2>JQuery</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ad molestiae consequatur nulla
+                quibusdam enim impedit eum pariatur! Enim perspiciatis dolorem non eligendi accusamus ipsam, iure
+                laborum repellat magnam ex!</p>
+            <p>Minus eveniet eius, dolorum voluptas itaque deleniti, facilis dolores fugit nobis debitis vel. Omnis
+                quaerat, iste adipisci temporibus, porro vitae cumque nobis perferendis provident ipsa, eos autem
+                aspernatur
+                incidunt delectus!</p>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        // 1.
+        // $("button").eq(0).click(function () {
+        //     $("p").addClass("fontS").removeClass("fontM fontL")
+        //     $(this).addClass("active").siblings().removeClass("active")
+        // })
+        // $("button").eq(1).click(function () {
+        //     $("p").addClass("fontM").removeClass("fontS fontL")
+        //     $(this).addClass("active").siblings().removeClass("active")
+        // })
+        // $("button").eq(2).click(function () {
+        //     $("p").addClass("fontL").removeClass("fontS fontM")
+        //     $(this).addClass("active").siblings().removeClass("active")
+        // })
+
+
+        // 2.
+        // $(".button-s").click(() => {
+        //     size("fontS", "fontM fontL", ".button-s")
+        // })
+        // $(".button-m").click(() => {
+        //     size("fontM", "fontS fontL", ".button-m")
+        // })
+        // $(".button-l").click(() => {
+        //     size("fontL", "fontS fontM", ".button-l")
+        // })
+
+        // function size(name, other, btn){
+        //     $("p").addClass(name).removeClass(other)
+        //     $(btn).addClass("active").siblings().removeClass("active")
+        // }
+
+        // 3.
+        $(".btn-group button").click(function(){
+            // console.log($(this).is(":contains(S)"))
+            let rmClassStr = "";
+            let addClassStr = "";
+            if($(this).is(":contains(S)")){
+                rmClassStr = "fontS"
+                addClassStr = "fontM fontL"
+            }
+            if($(this).is(":contains(M)")){
+                rmClassStr = "fontM"
+                addClassStr = "fontS fontL"
+            }
+            if($(this).is(":contains(L)")){
+                rmClassStr = "fontL"
+                addClassStr = "fontS fontM"
+            }
+            reRender(this, rmClassStr, addClassStr)
+        })
+        function reRender(btn, rmClassStr, addClassStr) {
+            $('p').removeClass(rmClassStr).addClass(addClassStr);
+            $(btn).addClass('active').siblings().removeClass('active')
+        }
+    </script>
+</body>
+
+</html>

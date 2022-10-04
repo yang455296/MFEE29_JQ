@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .box {
+            /* box-sizing: border-box; */
+            width: 200px;
+            height: 200px;
+            padding: 20px;
+            border: 5px solid #000;
+            margin: 50px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="box"></div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        console.log("width:", $(".box").width())
+        console.log("height:", $(".box").height());
+        console.log("innerWidth:", $(".box").innerWidth());
+        console.log("innerHeight:", $(".box").innerHeight());
+        console.log("outerWidth:", $(".box").outerWidth());
+        console.log("outerHeight:", $(".box").outerHeight());
+        console.log("outerWidth with margin:", $(".box").outerWidth(true));
+        console.log("outerHeight with margin:", $(".box").outerHeight(true));
+    </script>
+</body>
+
+</html>
