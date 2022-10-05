@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <button data-anistr="bounce">animation1</button>
+    <button data-anistr="pulse">animation2</button>
+    <h1 class="animate__animated">An animated element</h1>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        $('button').click(function () {
+            console.log('animate__', $(this).data('anistr'));
+            const aniStr = `animate__${$(this).data('anistr')}`;
+
+            $('h1').addClass(aniStr).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+                $(this).removeClass(aniStr);
+            })
+
+
+            // setTimeout(() => {
+            //     $('h1').removeClass('animate__bounce')
+            // }, 100);
+        })
+
+        // $('.button1').click(function () {
+        //     $('h1').addClass('animate__bounce').one('animationend', function () {
+        //         $(this).removeClass("animate__bounce");
+        //     })
+        //     // 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend'多瀏覽器
+
+        //     // $('h1').removeClass('animate__bounce')
+        // })
+        // $('.button2').click(function () {
+        //     $('h1').addClass('animate__pulse').one('ebkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
+        //         $(this).removeClass("animate__pulse");
+        //     })
+        // })
+    </script>
+
+</body>
+
+</html>

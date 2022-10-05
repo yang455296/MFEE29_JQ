@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        section {
+            height: 100vh;
+        }
+
+        .Section3 {
+            height: 300vh;
+        }
+
+        .ad-row {
+            position: sticky;
+            top: 0;
+        }
+
+        .ad-imgs-wrap {
+            position: absolute;
+            height: 100vh;
+            width: 100%;
+        }
+
+
+        .ad-imgs-wrap img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .ad3,
+        .ad2 {
+            transform-origin: 0 0;
+            /* animation: tear-off 3s infinite; */
+        }
+
+        /* @keyframes tear-off {
+            100% {
+                transform: translateX(-120%) rotate(20deg);
+            }
+        } */
+    </style>
+
+</head>
+
+<body>
+    <section class="Section1 autobg">section1</section>
+    <section class="Section2 autobg">section2</section>
+    <section class="Section3 autobg">
+        <div class="ad-row">
+            <div class="ad-imgs-wrap ad1">
+                <img src="./images/slide1.jpg" alt="">
+            </div>
+            <div class="ad-imgs-wrap ad2">
+                <img src="./images/slide2.jpg" alt="">
+            </div>
+            <div class="ad-imgs-wrap ad3">
+                <img src="./images/slide3.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="Section4 autobg">section4</section>
+    <section class="Section5 autobg">section5</section>
+    <section class="Section6 autobg">section6</section>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        $(window).scroll(function () {
+            const sec3Y = $(".Section3").offset().top
+            const nowY = $(window).scrollTop()
+            const winY = $(window).innerHeight()
+
+            if (nowY > sec3Y) {
+                const percentage = ((nowY - sec3Y) / winY)
+                const transX = -120 * percentage;
+                const transY = -20 * percentage;
+                const rotateDeg = 20 * percentage;
+
+                $('.ad3').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+            }
+            if (nowY > (sec3Y + winY)) {
+                const percentage = ((nowY - sec3Y - winY) / winY)
+                const transX = -120 * percentage;
+                const transY = -20 * percentage;
+                const rotateDeg = 20 * percentage;
+
+                $('.ad2').css('transform', `translate(${transX}%, ${transY}%) rotate(${rotateDeg}deg)`)
+            }
+            if (nowY < sec3Y) {
+                $('.ad3').css('transform', `translate(${0}%, ${0}%) rotate(${0}deg)`)
+            }
+            if (nowY < (sec3Y + winY)) {
+                $('.ad2').css('transform', `translate(${0}%, ${0}%) rotate(${0}deg)`)
+            }
+        })
+
+    </script>
+    <script>
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max - 50) + 100);
+        }
+
+        function getRBGA() {
+            return `linear-gradient(135deg, rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.5), rgba(${getRandomInt(256)},${getRandomInt(256)},${getRandomInt(256)},.8)`
+        }
+
+        const elements = document.querySelectorAll('.autobg');
+
+        Array.from(elements).forEach((element, index) => {
+            element.style.backgroundImage = getRBGA();
+        });
+
+    // $('.autobg').each(function (index, currentElement) {
+    //     currentElement.style.backgroundImage = getRBGA();
+    // });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            height: 300vh;
+        }
+        .banner{
+            height: calc(50vh - 50px);
+            background-color: lightblue;
+        }
+        .nav{
+            height: 50px;
+            width: 100%;
+            background-color: black;
+        }
+        .nav.fixed {
+            position: fixed;
+            top: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="banner"></div>
+    <div class="nav"></div>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        const navOffsetTop = $(".nav").offset().top
+        // fixed後 navOffsetTop = nowY 不會出現nowY<navOffsetTop的情況 所以要放在外面
+         $(window).scroll(function(){
+            // console.log($(window).scrollTop())
+            // console.log($(".nav").offset().top)
+            const nowY = $(window).scrollTop()
+            
+            if (nowY>navOffsetTop) $(".nav").addClass("fixed")
+            if (nowY<navOffsetTop) $(".nav").removeClass("fixed")
+         })
+    </script>
+</body>
+
+</html>

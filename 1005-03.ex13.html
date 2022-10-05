@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 1000vh;
+        }
+
+        .nav {
+            height: 50px;
+            width: 100%;
+            background-color: lightblue;
+            position: fixed;
+            top: 0;
+            transition: 0.5s;
+        }
+
+        .nav.hide {
+            transform: translateY(-110%);
+        }
+
+        /* button {
+            position: fixed;
+        } */
+    </style>
+
+</head>
+
+<body>
+
+    <div class="nav"></div>
+    <!-- <button>click</button> -->
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        // $("button").click(function(){
+        //     $(".nav").toggleClass("hide")
+        // })
+        let lastScroll = 0;
+        
+        $(window).scroll(function () {
+            let nowY = $(window).scrollTop();
+            if (lastScroll < nowY) $(".nav").addClass("hide");
+            if (lastScroll > nowY) $(".nav").removeClass("hide");
+            lastScroll = nowY;
+        })
+    </script>
+</body>
+
+</html>

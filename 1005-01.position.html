@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 20px;
+        }
+        .wrap{
+            width: 800px;
+            height: 800px;
+            background-color: #ccc;
+            padding: 50px;
+            position: relative;
+        }
+        .box1{
+            width: 400px;
+            height: 400px;
+            background-color: lightblue;
+            margin: 25px;
+            padding: 20px;
+            border: 3px solid red;
+            /* box1 的 margin, padding不影響box1的position */
+            /* box1 的 margin, padding會影響box2的position */
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: lightgreen;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <div class="wrap">
+        <div class="box1">
+            <div class="box2"></div>
+        </div>
+    </div>
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <script>
+        console.log("box1 position:",$(".box1").position())
+        console.log("box2 position:",$(".box2").position())
+    </script>
+</body>
+
+</html>

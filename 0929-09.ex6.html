@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
     <style>
         .wrap {
@@ -51,6 +55,33 @@
         .slider-dots li:nth-child(1) {
             background-color: #fff;
         }
+
+        .page-left-area,
+        .page-right-area {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 10%;
+            cursor: pointer;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.1s;
+        }
+
+        .page-left-area {
+            left: 0;
+        }
+
+        .page-right-area {
+            right: 0;
+        }
+
+        .page-left-area:hover,
+        .page-right-area:hover {
+            background-color: rgba(255, 255, 255, 0.355);
+        }
     </style>
 </head>
 
@@ -70,24 +101,58 @@
             <li></li>
             <li></li>
         </ul>
+
+        <div class="page-left-area">
+            <button class="btn">
+                <i class="fa-solid fa-arrow-left"></i>
+            </button>
+        </div>
+        <div class="page-right-area">
+            <button class="btn">
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
     </div>
 
 
     <script src="./js/jquery-3.6.1.min.js"></script>
 
     <script>
+        let nowPage = 0;
+
         $(".slider-dots li").click(function () {
+            nowPage = $(this).index();
+            pageMovement(nowPage);
+
             // console.log("click", $(this).index())
-            const n = $(this).index() * -800;
+            // const n = $(this).index() * -800;
             // console.log(n)
 
             // $(".train").css("transform", "translateX(" + n + "px)")
-            $(".train").css("transform", `translateX(${n}px)`)
+            // $(".train").css("transform", `translateX(${n}px)`)
 
             // $(".slider-dots li").css("background-color", "transparent")  // 全部變透明
-            $(this).css("background-color", "#fff") // 選中的變白色
-            $(this).siblings().css("background-color", "transparent") // 其他變透明
+            // $(this).css("background-color", "#fff") // 選中的變白色
+            // $(this).siblings().css("background-color", "transparent") // 其他變透明
         })
+
+        $(".page-left-area").click(function () {
+            nowPage--;
+            if (nowPage < 0) nowPage = 4
+            pageMovement(nowPage)
+        })
+
+        $(".page-right-area").click(function () {
+            nowPage++;
+            if (nowPage > $(".slider-dots li").length - 1) nowPage = 0
+            pageMovement(nowPage)
+        })
+
+        function pageMovement(nowPage) {
+            const moveX = nowPage * -800;
+            $(".train").css("transform", `translateX(${moveX}px)`)
+            $(".slider-dots li").eq(nowPage).css("background-color", "#fff").siblings().css("background-color", "transparent")
+        }
     </script>
 </body>
 

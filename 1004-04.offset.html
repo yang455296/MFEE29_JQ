@@ -77,20 +77,20 @@
     // });
     </script>
     <script>
-        // $(window).scroll(function () {
-        //     const nowScroll = $(window).scrollTop();
-        //     const sec2top = $(".section2").offset().top
-        //     if (nowScroll < 0.5 * sec2top) {
-        //         $(".wrap").removeClass("show")
-        //     }
-        //     if (nowScroll >= 0.5 * sec2top && nowScroll < 1.5 * sec2top) {
-        //         $(".wrap").addClass("show")
-        //     }
-        //     if (nowScroll >= 1.5 * sec2top) {
-        //         $(".wrap").removeClass("show")
-        //     }
+        $(window).scroll(function () {
+            const nowScroll = $(window).scrollTop();
+            const sec2top = $(".section2").offset().top
+            if (nowScroll < 0.5 * sec2top) {
+                $(".wrap").removeClass("show")
+            }
+            if (nowScroll >= 0.5 * sec2top && nowScroll < 1.5 * sec2top) {
+                $(".wrap").addClass("show")
+            }
+            if (nowScroll >= 1.5 * sec2top) {
+                $(".wrap").removeClass("show")
+            }
 
-        // })
+        })
 
     </script>
 </body>
