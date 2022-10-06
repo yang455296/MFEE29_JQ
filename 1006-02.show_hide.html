@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <button>click</button>
+    <button>click</button>
+    <button>click</button>
+    <h1>hi h1</h1>
+    <h2>hi h2</h2>
+
+    <script src="./js/jquery-3.6.1.min.js"></script>
+
+    <script>
+        $('button').eq(0).click(function () {
+            $('h1').toggle(1000, function () {
+                console.log('toggle done.');
+            })
+        })
+        $('button').eq(1).click(function () {
+            $('h1').fadeToggle(1000, function () {
+                console.log('toggle done.');
+            })
+        })
+        $('button').eq(2).click(function () {
+            $("h1").fadeTo(1000, 0);
+        })
+    </script>
+</body>
+
+</html>
